@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
+import Character from './components/Character';
+
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
@@ -12,7 +14,7 @@ const App = () => {
   useEffect(() => {
     axios.get('https://swapi.dev/api/people/')
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setCharacters(res.data);
       })
       .catch(err => {
@@ -23,6 +25,7 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+      {characters[1] && <Character characters={characters} />}
     </div>
   );
 }
